@@ -82,6 +82,9 @@ public class ClassTest {
         //We have to do either one of them, either dismiss or accept.
 
         Thread.sleep(1000);
+        //For every JavaScript Executor for scroll down, First we have to find web element
+        //through find element, and then we have to scroll to the element through javascript
+        //executor and then we have to perform the action click or send keys.
 
 
         String var = driver.findElement(By.xpath("//span[@id='confirmResult']")).getText();

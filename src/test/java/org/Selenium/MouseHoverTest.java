@@ -73,9 +73,9 @@ public class MouseHoverTest {
         driver.get("https://www.tutorialspoint.com/about/about_careers.htm");
         String term = Keys.chord(Keys.CONTROL, Keys.ENTER);//keyboard action and storing
                                                            //the value in "term" in String
-        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",element);
-        driver.findElement(By.xpath("//a[text()='Terms of Use']")).sendKeys(term);
-        //element.sendKeys(term);
+        WebElement element = driver.findElement(By.xpath("//a[text()='Terms of Use']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",element);
+        element.sendKeys(term);
         //then we have to find the element and then send the keys in which you have stored
         //in keys.chord. and then it will open in new tab.
         //Here the javaScript executor is given by me only, just to see how to scroll the
