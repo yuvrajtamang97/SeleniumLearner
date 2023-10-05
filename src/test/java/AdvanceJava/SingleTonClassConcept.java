@@ -19,7 +19,7 @@ public class SingleTonClassConcept {
         //And, a.equals c is true and a == c is false, because they are same alphabetically
         // but, they are not in same memory location.
         // So, therefore to overcome this problem, we have to use the singleton class concept.
-        System.out.println(a.hashCode());//just to print the id of 'a'.
+        System.out.println(a.hashCode());//These hashcode are given to just print the id of 'a'.
         System.out.println(b.hashCode());
         System.out.println(Integer.toHexString(System.identityHashCode(a)));
         System.out.println(Integer.toHexString(System.identityHashCode(c)));
@@ -50,7 +50,9 @@ class Singleton{
     }
 
     public void display(){
+
         System.out.println("Dummy method");
     }
 }
 
+//this format of singleton class is same.
