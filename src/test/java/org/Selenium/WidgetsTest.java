@@ -84,7 +84,7 @@ public class WidgetsTest {
         //first we have to send a character.
 
         String texttobeclicked = "Clojure";// expected things to be clicked.
-        WebElement autooptions  = driver.findElement(By.id("ui-id-1"));
+        WebElement autooptions = driver.findElement(By.id("ui-id-1"));
 
         try {
             wait.until(ExpectedConditions.visibilityOf(autooptions));
@@ -110,7 +110,7 @@ public class WidgetsTest {
 
     }
 
-    @Test(priority = 0)
+    @Test(enabled = false)
     public void test_autocomplete_Amazon() throws InterruptedException {
         driver.get("https://www.amazon.com/");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -122,7 +122,7 @@ public class WidgetsTest {
         //first we have to send a character.
 
         String texttobeclicked = "nespresso pods";// expected things to be clicked.
-        WebElement autooptions  = driver.findElement(By.xpath("//*[@class='left-pane-results-container']"));
+        WebElement autooptions = driver.findElement(By.xpath("//*[@class='left-pane-results-container']"));
 
         try {
             wait.until(ExpectedConditions.visibilityOf(autooptions));
@@ -145,6 +145,65 @@ public class WidgetsTest {
 
 
         Thread.sleep(3000);
+
+    }
+
+    @Test(priority = 0)
+    public void openHRM_add_user() throws InterruptedException {
+        String user_role_to_be_select = "ESS";
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser");
+        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+        Thread.sleep(1000);
+
+        driver.findElement(By.xpath("//label[contains(text(),'User Role')]/../following-sibling::div")).click();
+        //This is for clicking the dropdown menu option for the user role.
+        //Thread.sleep(1000);
+        //WebElement e = driver.findElement(By.xpath(//label[contains(text(),'User Role')]/../following-sibling::div//div[@role='listbox']
+        //String d = elem.getAttribute("innerHTML");
+        //System.out.println(d);
+
+        /*
+         * Method 1
+         */
+
+        Thread.sleep(1000);
+
+        WebElement elem = driver.findElement(By.xpath("//label[contains(text(),'User Role')]/../following-sibling::div//div[@role='option']/span[text()='ESS']"));
+
+        elem.click();
+
+        //String d = elem.getAttribute("innerHTML");
+        //As we cannot see what is inside the code, so we are using the commented codes and the inner html code
+        //to see what is inside the code.
+        //After the code has been shown in intellij, then we have to copy our code in
+        // free online HTML formatter i.e. freeformatter.com.
+        //and then we have to comment out the inner html.
+        //locater for the Employee Name = //label[contains(text(),'Employee Name')]/../following-sibling::div//input[@placeholder='Type for hints...']
+
+        /*
+         * Method 2
+         */
+
+//        Actions act = new Actions(driver);
+//        while (true){
+//            act.sendKeys(Keys.DOWN).perform();
+//            Thread.sleep(1000);
+//            WebElement elem = driver.findElement(By.xpath("//label[contains(text(),'User Role')]/../following-sibling::div//div[@role='option' and contains(@class, 'select-option --focused')]"));
+//            String userroleselected = elem.getText();
+//            if (userroleselected.equals(user_role_to_be_select)){
+//                act.sendKeys(Keys.ENTER).perform();
+//                break;
+//            }
+//        }
+
+        //System.out.println(d);
+
+        // Second method will be used when there is scroller in the list and too many
+        // items in the list.
+
 
     }
 

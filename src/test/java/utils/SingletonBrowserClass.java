@@ -1,12 +1,12 @@
-package com.driver;
+package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.concurrent.TimeUnit;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 public class SingletonBrowserClass {
 
@@ -15,7 +15,7 @@ public class SingletonBrowserClass {
     private final WebDriver driver;
     public final static int TIMEOUT = 10;
 
-    private SingletonBrowserClass() {
+    private SingletonBrowserClass(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--remote-allow-origins=*");
@@ -28,7 +28,6 @@ public class SingletonBrowserClass {
         driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
     }
 
-
     public static SingletonBrowserClass getInstanceOfSingletonBrowserClass() {
         if (instanceOfSingletonBrowserClass == null){
             instanceOfSingletonBrowserClass = new SingletonBrowserClass();
@@ -38,7 +37,6 @@ public class SingletonBrowserClass {
     }
 
     public WebDriver getDriver(){
-
         return driver;
     }
 }
